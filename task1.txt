@@ -1,0 +1,28 @@
+import cv2
+
+img = cv2.imread("mountain.avif")
+
+print("Shape =", img.shape)
+print("Dtype =", img.dtype)
+print("Total Pixels =", img.shape[0] * img.shape[1])
+
+h, w = img.shape[:2]
+
+print("Center Pixel (BGR) =", img[h//2, w//2])
+
+img_float = img.astype("float32")
+print("Center Pixel Float32 =", img_float[h//2, w//2])
+
+img_back = img_float.astype("uint8")
+
+blue = img[:, :, 0]
+green = img[:, :, 1]
+red = img[:, :, 2]
+
+cv2.imshow("Original", img)
+cv2.imshow("Blue", blue)
+cv2.imshow("Green", green)
+cv2.imshow("Red", red)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
